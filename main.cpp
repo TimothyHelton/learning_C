@@ -7,22 +7,32 @@
 
 
 int CountDown (int start) {
-    while (start >= 0) {
+//    while (start >= 0) {
+//        std::cout << start << " ";
+//        --start;
+//    }
+
+    for (start; start >= 0; --start) {
         std::cout << start << " ";
-        --start;
     }
+
     std::cout << std::endl;
     return 0;
 }
 
 
 int Factorial (int max_number) {
-    int factorial = 1, val = 1;
+    int factorial = 1, val = max_number;
 
-    while (val <= max_number) {
+//    while (val > 0) {
+//        factorial *= val;
+//        --val;
+//    }
+
+    for (val; val > 0; --val) {
         factorial *= val;
-        ++val;
     }
+
     std::cout << max_number << "! = " << factorial << std::endl;
     return 0;
 }
@@ -46,10 +56,15 @@ int PrintRange() {
     std::cin >> start >> end;
 
     val = start;
-    while (val <= end) {
+//    while (val <= end) {
+//        std::cout << val << " ";
+//        ++val;
+//    }
+
+    for (val; val <= end; ++val) {
         std::cout << val << " ";
-        ++val;
     }
+
     std::cout << std::endl;
     return 0;
 }
@@ -69,10 +84,15 @@ int Sum () {
 int SumRange (int start, int end) {
     int sum = 0, val = start;
 
-    while (val <= end) {
+//    while (val <= end) {
+//        sum += val;
+//        ++val;
+//    }
+
+    for (val; val <= end; ++val) {
         sum += val;
-        ++val;
     }
+
     std::cout << "Sum of the range " << start << " to " << end << " = " << sum
               << std::endl;
     return 0;
@@ -85,12 +105,12 @@ int main () {
     std::cout << std::endl;
     Hello::PersonalHello("Tim");
 
-//    Sum();
-//    Multiply();
-//    Factorial(10);
-//    SumRange(50, 100);
 //    CountDown(10);
-    PrintRange();
+//    Multiply();
+//    Factorial(4);
+//    PrintRange();
+//    Sum();
+//    SumRange(50, 100);
 
     return 0;
 }
