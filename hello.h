@@ -13,16 +13,16 @@ class Hello {
 public:
 
     // print Hello World!
-    static int helloWorld () {
+    static int HelloWorld () {
         std::cout << "Hello World!" << std::endl;
         return 0;
-    };
+    }
 
     // print personalized hello
-    static int personalHello (char* &name) {
-        std::cout << "Hello " << &name << std::endl;
+    static int PersonalHello (const char* name) {
+        std::cout << "Hello " << name << std::endl;
         return 0;
-    };
+    }
 
 };
 
