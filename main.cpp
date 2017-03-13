@@ -24,10 +24,10 @@ int CountDown(int start) {
 
 
 int CountNumbers() {
-    int value;                        // input index number
+    int value;                        // input value
     std::map<int, int> all_values;    // dictionary of all inputs
 
-    while(std::cin >> value) {
+    while (std::cin >> value) {
         if (all_values.count(value) == 0) {
             all_values.emplace(value, 1);
         }
@@ -38,6 +38,34 @@ int CountNumbers() {
 
     for (const auto &p : all_values) {
         std::cout << p.first << " => " << p.second << std::endl;
+    }
+    return 0;
+}
+
+
+int DuplicateNumbers() {
+    int value;                          // input value
+    int idx = 0;                        // input index
+    std::queue<int> all_values;         // list of all inputs
+    std::map<int, int> usage;           // dictionary of inputs usages
+
+    while (std::cin >> value) {
+        all_values.push(value);
+    }
+
+    for (idx; all_values.size(); ++idx) {
+        value = all_values.front();
+        if (usage.count(value) == 0) {
+            usage.emplace(value, 1);
+        }
+        else {
+            usage[value] = ++usage.at(value);
+        }
+        all_values.pop();
+    }
+
+    for (const auto &p : usage) {
+        std::cout << p.first << " occurs " << p.second << " times" << std::endl;
     }
     return 0;
 }
@@ -102,7 +130,6 @@ int Sum() {
     return 0;
 }
 
-
 int SumRange(int start, int end) {
     int sum = 0, val = start;
 
@@ -120,6 +147,7 @@ int SumRange(int start, int end) {
     return 0;
 }
 
+
 int SumUnknown() {
     int sum = 0;
     int value = 0;
@@ -133,7 +161,6 @@ int SumUnknown() {
               << all_values.back() << " = " << sum << std::endl;
 }
 
-
 int main () {
 
     Hello::HelloWorld();
@@ -142,6 +169,7 @@ int main () {
 
 //    CountDown(10);
 //    CountNumbers();
+    DuplicateNumbers();
 //    Multiply();
 //    Factorial(4);
 //    PrintRange();
