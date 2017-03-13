@@ -3,10 +3,12 @@
 //
 
 #include <iostream>
+#include <map>
+#include <queue>
 #include "hello.h"
 
 
-int CountDown (int start) {
+int CountDown(int start) {
 //    while (start >= 0) {
 //        std::cout << start << " ";
 //        --start;
@@ -21,7 +23,27 @@ int CountDown (int start) {
 }
 
 
-int Factorial (int max_number) {
+int CountNumbers() {
+    int value;                        // input index number
+    std::map<int, int> all_values;    // dictionary of all inputs
+
+    while(std::cin >> value) {
+        if (all_values.count(value) == 0) {
+            all_values.emplace(value, 1);
+        }
+        else {
+            all_values[value] = ++all_values.at(value);
+        }
+    }
+
+    for (const auto &p : all_values) {
+        std::cout << p.first << " => " << p.second << std::endl;
+    }
+    return 0;
+}
+
+
+int Factorial(int max_number) {
     int factorial = 1, val = max_number;
 
 //    while (val > 0) {
@@ -38,7 +60,7 @@ int Factorial (int max_number) {
 }
 
 
-int Multiply () {
+int Multiply() {
     int value_1 = 0, value_2 = 0;
 
     std::cout << "Enter two numbers: " << std::endl;
@@ -70,7 +92,7 @@ int PrintRange() {
 }
 
 
-int Sum () {
+int Sum() {
     int value_1 = 0, value_2 = 0;
 
     std::cout << "Enter two numbers: " << std::endl;
@@ -81,7 +103,7 @@ int Sum () {
 }
 
 
-int SumRange (int start, int end) {
+int SumRange(int start, int end) {
     int sum = 0, val = start;
 
 //    while (val <= end) {
@@ -98,6 +120,19 @@ int SumRange (int start, int end) {
     return 0;
 }
 
+int SumUnknown() {
+    int sum = 0;
+    int value = 0;
+    std::queue<int> all_values; // a queue is equivalent to a list
+
+    while(std::cin >> value) {
+        sum += value;
+        all_values.push(value);
+    }
+    std::cout << "Sum of the range " << all_values.front() << " to "
+              << all_values.back() << " = " << sum << std::endl;
+}
+
 
 int main () {
 
@@ -106,11 +141,13 @@ int main () {
     Hello::PersonalHello("Tim");
 
 //    CountDown(10);
+//    CountNumbers();
 //    Multiply();
 //    Factorial(4);
 //    PrintRange();
 //    Sum();
 //    SumRange(50, 100);
+//    SumUnknown();
 
     return 0;
 }
